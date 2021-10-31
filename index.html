@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="pages/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Место</title>
+</head>
+
+<body class="body">
+    <header class="header">
+        <img class="header__logo" src="images/header_logo.svg">
+    </header>
+
+    <section class="profile">
+        <div class="profile__container">
+            <img class="profile__avatar" src="images/profile_avatar.png">
+            <div class="profile__info">
+                <div class="profile__name-container">
+                    <h2 class="profile__name">Жак-Ив Кусто</h2>
+                    <button class="profile__edit-button">
+                        <img class="profile__image-edit-button" src="images/profile_edit-button.svg">
+                    </button>
+                </div>
+                <p class="profile__profession">Исследователь океана</p>
+            </div>
+        </div>
+        <button class="profile__add-button">
+            <img class="profile__image-add-button" src="images/profile_add-button.svg">
+        </button>
+    </section>
+    <section class="elements">
+        <div class="element">
+            <img class="element__picture" src="images/element_nevskiy.jpg">
+            <div class="element__container">
+                <h3 class="element__title">Невский проспект</h3>
+                <button class="element__like-button"><img src="images/element_like.svg"></button>
+            </div>
+        </div>
+        <div class="element">
+            <img class="element__picture" src="images/element_yahtenyi.jpg">
+            <div class="element__container">
+                <h3 class="element__title">Яхтенный мост</h3>
+                <button class="element__like-button"><img src="images/element_like.svg"></button>
+            </div>
+        </div>
+        <div class="element">
+            <img class="element__picture" src="images/element_dvorcovyi.jpg">
+            <div class="element__container">
+                <h3 class="element__title">Дворцовый мост</h3>
+                <button class="element__like-button"><img src="images/element_like.svg"></button>
+            </div>
+        </div>
+        <div class="element">
+            <img class="element__picture" src="images/element_lahta.jpg">
+            <div class="element__container">
+                <h3 class="element__title">Лахта Центр</h3>
+                <button class="element__like-button"><img src="images/element_like.svg"></button>
+            </div>
+        </div>
+        <div class="element">
+            <img class="element__picture" src="images/element_isakievsiy.jpg">
+            <div class="element__container">
+                <h3 class="element__title">Исаакиевский Собор</h3>
+                <button class="element__like-button"><img src="images/element_like.svg"></button>
+            </div>
+        </div>
+        <div class="element">
+            <img class="element__picture" src="images/element_fontanka.jpg">
+            <div class="element__container">
+                <h3 class="element__title">Река Фонтанка</h3>
+                <button class="element__like-button"><img src="images/element_like.svg"></button>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p class="footer__copyright">© 2021 Mesto Russia</p>
+    </footer>
+        
+   
+    <div class="form">
+        <form class="form__container">
+            <button class="form__exit-button"><img class="form__exit-button-image"src="images/form_exit-button.svg"></button>
+            <h2 class="form__title">Редактировать профиль</h2>
+            <div class="form__text-inputs">
+                <input type="text" class="form__input form__input_type_name" value="">
+                <input type="text" class="form__input form__input_type_profession" value=""> 
+            </div>
+            <input type="submit" value="Сохранить" class="form__submit">
+        </form>
+    </div>
+    <script src="scripts/index.js"></script>
+</body>

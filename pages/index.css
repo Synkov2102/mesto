@@ -1,0 +1,42 @@
+@import url(../vendor/fonts.css);
+
+@import url(../blocks/body/body.css);
+
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__container/profile__container.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name-container/profile__name-container.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__profession/profile__profession.css);
+@import url(../blocks/profile/__edit-button/profile__edit-button.css);
+@import url(../blocks/profile/__image-edit-button/profile__image-edit-button.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__image-add-button/profile__image-add-button.css);
+
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/element/element.css);
+@import url(../blocks/element/__like-button/element__like-button.css);
+@import url(../blocks/element/__picture/element__picture.css);
+@import url(../blocks/element/__title/element__title.css);
+@import url(../blocks/element/__container/element__container.css);
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/_opened/form_opened.css);
+
+@import url(../blocks/form/__container/form__container.css);
+@import url(../blocks/form/__exit-button/form__exit-button.css);
+@import url(../blocks/form/__exit-button-image/form__exit-button-image.css);
+@import url(../blocks/form/__input/form_input.css);
+@import url(../blocks/form/__input/_type/form__input_type_name.css);
+@import url(../blocks/form/__input/_type/form__input_type_profession.css);
+@import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__submit/form__submit.css);
+@import url(../blocks/form/__text-inputs/form__text-inputs.css);
+

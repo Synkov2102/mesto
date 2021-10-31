@@ -1,0 +1,10 @@
+.form__text-inputs{
+    margin: 54px auto 48px auto;
+    text-align: center;
+}
+
+@media (max-width:520px) {
+    .form__text-inputs{
+        margin: 75px auto 45px auto;
+    }
+}
