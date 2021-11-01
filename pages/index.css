@@ -33,7 +33,7 @@
 @import url(../blocks/form/__container/form__container.css);
 @import url(../blocks/form/__exit-button/form__exit-button.css);
 @import url(../blocks/form/__exit-button-image/form__exit-button-image.css);
-@import url(../blocks/form/__input/form_input.css);
+@import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__input/_type/form__input_type_name.css);
 @import url(../blocks/form/__input/_type/form__input_type_profession.css);
 @import url(../blocks/form/__title/form__title.css);
