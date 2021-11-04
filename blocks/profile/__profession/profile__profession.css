@@ -6,6 +6,10 @@
     font-weight: normal;
     font-size: 18px;
     line-height: 1.22;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 370px; 
 }
 @media (max-width:950px) {
     .profile__profession{
@@ -17,5 +21,6 @@
 @media (max-width:500px) {
     .profile__profession{
         font-size: 14px;
+        max-width: 280px;
     }
 }

@@ -1,10 +1,12 @@
-.form__text-inputs{
+.popup__text-inputs{
     margin: 54px auto 48px auto;
     text-align: center;
+    border:none;
+    padding: 0;
 }
 
 @media (max-width:520px) {
-    .form__text-inputs{
+    .popup__text-inputs{
         margin: 75px auto 45px auto;
     }
 }
