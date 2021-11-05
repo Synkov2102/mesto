@@ -12,7 +12,7 @@
     <header class="header">
         <img class="header__logo" src="images/header_logo.svg" alt="Логотип Место">
     </header>
-    <div class="main">
+    <main class="main">
         <section class="profile">
             <div class="profile__container">
                 <img class="profile__avatar" src="images/profile_avatar.png" alt="Аватар профиля">
@@ -82,7 +82,7 @@
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 
     <footer class="footer">
         <p class="footer__copyright">© 2021 Mesto Russia</p>
@@ -90,18 +90,20 @@
 
 
     <div class="popup">
-        <form class="popup__container">
-            <button type="button" class="popup__exit-button">
-                <img class="popup__exit-button-image" src="images/form_exit-button.svg"
-                    alt='Изображение кнопки "выйти"'>
-            </button>
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <fieldset class="popup__text-inputs">
-                <input type="text" class="popup__input popup__input_type_name" value="" placeholder="Имя">
-                <input type="text" class="popup__input popup__input_type_profession" value="" placeholder="Род деятельности">
-            </fieldset>
-            <input type="submit" value="Сохранить" class="popup__submit">
-        </form>
+        <div class="popup__container">
+            <form class="popup__form">
+                <button type="button" class="popup__exit-button">
+                    <img class="popup__exit-button-image" src="images/form_exit-button.svg"
+                        alt='Изображение кнопки "выйти"'>
+                </button>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <fieldset class="popup__text-inputs">
+                    <input type="text" class="popup__input popup__input_type_name" value="" placeholder="Имя">
+                    <input type="text" class="popup__input popup__input_type_profession" value="" placeholder="Род деятельности">
+                </fieldset>
+                <input type="submit" value="Сохранить" class="popup__submit">
+            </form>
+        </div>
     </div>
     <script src="scripts/index.js"></script>
 </body>

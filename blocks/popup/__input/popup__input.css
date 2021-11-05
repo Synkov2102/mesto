@@ -20,7 +20,5 @@
 @media (max-width:520px){
     .popup__input{
         width: 238px;
-        font-size: 14px;
-        line-height: 17px;
     }
 }
