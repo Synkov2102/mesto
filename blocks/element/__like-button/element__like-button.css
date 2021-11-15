@@ -6,8 +6,17 @@
     color: inherit;
     background-color: transparent;
     cursor: pointer;
+    width: 22px;
+    height: 19px;
+    background-image: url(../../../images/element_like.svg);
+    background-repeat: no-repeat;
+
 }
 
 .element__like-button:hover{
     opacity: 0.5;
+}
+
+.element__like-button:focus{
+    outline: 3px solid #80A6FF;
 }

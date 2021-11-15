@@ -33,54 +33,7 @@
             </button>
         </section>
         <section class="elements">
-            <div class="element">
-                <img class="element__picture" src="images/element__nevskyi.png" alt="Невский проспект">
-                <div class="element__container">
-                    <h2 class="element__title">Невский проспект</h2>
-                    <button type="button" class="element__like-button"><img src="images/element_like.svg"
-                            alt="Кнопка лайк"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__picture" src="images/element__yahtenyi.png" alt="Яхтенный мост">
-                <div class="element__container">
-                    <h2 class="element__title">Яхтенный мост</h2>
-                    <button type="button" class="element__like-button"><img src="images/element_like.svg"
-                            alt="Кнопка лайк"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__picture" src="images/element_dvorcovyi.png" alt="Дворцовый мост">
-                <div class="element__container">
-                    <h2 class="element__title">Дворцовый мост</h2>
-                    <button type="button" class="element__like-button"><img src="images/element_like.svg"
-                            alt="Кнопка лайк"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__picture" src="images/element_lahta.png" alt="Лахта центр">
-                <div class="element__container">
-                    <h2 class="element__title">Лахта Центр</h2>
-                    <button type="button" class="element__like-button"><img src="images/element_like.svg"
-                            alt="Кнопка лайк"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__picture" src="images/element_isakievskyi.png" alt="Исаакиевский Собор">
-                <div class="element__container">
-                    <h2 class="element__title">Исаакиевский Собор</h2>
-                    <button type="button" class="element__like-button"><img src="images/element_like.svg"
-                            alt="Кнопка лайк"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__picture" src="images/element_fontanka.png" alt="Река Фонтанка">
-                <div class="element__container">
-                    <h2 class="element__title">Река Фонтанка</h2>
-                    <button type="button" class="element__like-button"><img src="images/element_like.svg"
-                            alt="Кнопка лайк"></button>
-                </div>
-            </div>
+            
         </section>
     </main>
 
@@ -89,7 +42,7 @@
     </footer>
 
 
-    <div class="popup">
+    <div class="popup popup_for_edit-button">
         <div class="popup__container">
             <form class="popup__form">
                 <button type="button" class="popup__exit-button">
@@ -105,6 +58,44 @@
             </form>
         </div>
     </div>
+    <div class="popup popup_for_add-button">
+        <div class="popup__container">
+            <form class="popup__form">
+                <button type="button" class="popup__exit-button">
+                    <img class="popup__exit-button-image" src="images/form_exit-button.svg"
+                        alt='Изображение кнопки "выйти"'>
+                </button>
+                <h2 class="popup__title">Новое место</h2>
+                <fieldset class="popup__text-inputs">
+                    <input type="text" class="popup__input popup__input_type_title" placeholder="Название">
+                    <input type="text" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку">
+                </fieldset>
+                <input type="submit" value="Создать" class="popup__submit">
+            </form>
+        </div>
+    </div>
+    <div class="popup popup_for_image">
+        <div class="popup__container">
+            <button type="button" class="popup__exit-button">
+                <img class="popup__exit-button-image" src="images/form_exit-button.svg"
+                    alt='Изображение кнопки "выйти"'>
+            </button>
+            <img class="popup__image" alt="Картинка с карточки" src="images">
+            <p class="popup__subtitle"></p>
+        </div>
+    </div>
+    <template id='element'>
+        <div class="element">
+            <button type="button" class="element__image-button">
+                <img class="element__picture" alt="Картинка Элемента" src="">
+            </button>
+            <div class="element__container">
+                <h2 class="element__title"></h2>
+                <button type="button" class="element__like-button"></button>
+            </div>
+            <button type="button" class="element__delete-button"></button>
+        </div>
+    </template>
     <script src="scripts/index.js"></script>
 </body>
 
