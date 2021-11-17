@@ -29,40 +29,55 @@ const initialCards = [
 //Переменные для попапов
 const popupEdit = document.querySelector('.popup_for_edit-button');
 const popupAdd = document.querySelector('.popup_for_add-button');
-const popupImage = document.querySelector('.popup_for_image');
+
 
 const profile = document.querySelector('.profile');
 
 //Кнопки открытия форм
 const editButton = profile.querySelector('.profile__edit-button');
-const addButton = profile.querySelector('.profile__add-button')
+const addButton = profile.querySelector('.profile__add-button');
+const popupImage = document.querySelector('.popup_for_image');
 
-const popupOpen = (popup, openButton) =>{
-  openButton.addEventListener('click',() =>{
-    popup.classList.toggle('popup_open');
-  });
+//Переменные для контейнеров в попапах
+const popupEditContainer = popupEdit.querySelector('.popup__container');
+const popupAddContainer = popupAdd.querySelector('.popup__container');
+
+//Переменные для контейнеров в попапах
+const popupEditExitBtn = popupEdit.querySelector('.popup__exit-button');
+const popupAddExitBtn = popupAdd.querySelector('.popup__exit-button');
+const popupImageExitBtn = popupImage.querySelector('.popup__exit-button');
+
+// Переменный полей попапов
+const nameInput = popupEdit.querySelector('.popup__input_type_name');
+const jobInput = popupEdit.querySelector('.popup__input_type_profession');
+const titleInput = popupAdd.querySelector('.popup__input_type_title');
+const linkInput = popupAdd.querySelector('.popup__input_type_link');
+
+// Переменные имени и вида деятельности профиля на странице
+const profileName = document.querySelector('.profile__name');
+const profileProfession = document.querySelector('.profile__profession');
+//Переменная блока элементов
+const elements = document.querySelector('.elements');
+
+
+const popupOpen = (popup) =>{
+  popup.classList.add('popup_open');
 }
 
 const popupClose = (popup) =>{
-  const exitButton = popup.querySelector('.popup__exit-button');
-  exitButton.addEventListener('click',() =>{
-    popup.classList.remove('popup_open');
-  });
+  popup.classList.remove('popup_open');
 }
 
 const cardOutput = (object) =>{
   const elementTemplate = document.querySelector('#element').content;
-  const elements = document.querySelector('.elements');
   // клонируем содержимое тега template
   const elementElement = elementTemplate.querySelector('.element').cloneNode(true);
 
   // наполняем содержимым
   elementElement.querySelector('.element__picture').src = object.link;
-  elementElement.querySelector('.element__picture').alt = ('Картинка "'+object.name+'"');
+  elementElement.querySelector('.element__picture').alt = ('Картинка "'+ object.name +'"');
   elementElement.querySelector('.element__title').textContent = object.name;
 
-  // отображаем на странице
-  elements.prepend(elementElement);
 
   const deleteButton = elementElement.querySelector('.element__delete-button');
   deleteButton.addEventListener('click', ()=>{
@@ -76,34 +91,23 @@ const cardOutput = (object) =>{
   });
 
   const imageButton = elementElement.querySelector('.element__image-button');
+  
+
   imageButton.addEventListener('click', ()=>{
-    popupOpen(popupImage, imageButton);
+    popupOpen(popupImage);
     popupImage.querySelector('.popup__image').src = imageButton.querySelector('.element__picture').src;
+    popupImage.querySelector('.popup__image').alt = ('Картинка "'+ imageButton.closest('.element').querySelector('.element__title').textContent +'"');
     popupImage.querySelector('.popup__subtitle').textContent = imageButton.closest('.element').querySelector('.element__title').textContent;
-    popupClose(popupImage);
   });
+  popupImageExitBtn.addEventListener('click',() => popupClose(popupImage));
+  return elementElement;
 }
-
-//Переменные для контейнеров в попапах
-const popupEditContainer = popupEdit.querySelector('.popup__container');
-const popupAddContainer = popupAdd.querySelector('.popup__container');
-const popupImageContainer = popupImage.querySelector('.popup__container')
-
-// Переменный полей попапов
-const nameInput = popupEdit.querySelector('.popup__input_type_name');
-const jobInput = popupEdit.querySelector('.popup__input_type_profession');
-const titleInput = popupAdd.querySelector('.popup__input_type_title');
-const linkInput = popupAdd.querySelector('.popup__input_type_link');
-
-// Переменные имени и вида деятельности профиля на странице
-const profileName = document.querySelector('.profile__name');
-const profileProfession = document.querySelector('.profile__profession');
 
 function editFormSubmitHandler (evt) {
   evt.preventDefault(); 
   profileName.textContent = nameInput.value;
   profileProfession.textContent = jobInput.value;
-  popupEdit.classList.remove('popup_open');   
+  popupClose(popupEdit);   
 }
 
 function addFormSubmitHandler (evt) {
@@ -113,23 +117,23 @@ function addFormSubmitHandler (evt) {
   const object = {};
   object.link = linkInput.value;
   object.name = titleInput.value;
-  cardOutput(object);
-  popupAdd.classList.remove('popup_open');
+  elements.prepend(cardOutput(object));
+  popupClose(popupAdd);
   linkInput.value='';
   titleInput.value='';
 
 }
 
-popupOpen(popupEdit, editButton);
+editButton.addEventListener('click',() => popupOpen(popupEdit));
 nameInput.value = profileName.textContent;
 jobInput.value = profileProfession.textContent;
-popupClose(popupEdit);
+popupEditExitBtn.addEventListener('click',() => popupClose(popupEdit));
 
-popupOpen(popupAdd, addButton);
-popupClose(popupAdd);
-
+addButton.addEventListener('click', () => popupOpen(popupAdd));
+popupAddExitBtn.addEventListener('click' ,() => popupClose(popupAdd));
+ 
 initialCards.forEach((item)=>{
-  cardOutput(item);
+  elements.append(cardOutput(item));
 });
 
 // Прикрепляем обработчик к форме:
