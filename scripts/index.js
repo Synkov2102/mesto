@@ -99,7 +99,6 @@ const cardOutput = (object) =>{
     popupImage.querySelector('.popup__image').alt = ('Картинка "'+ imageButton.closest('.element').querySelector('.element__title').textContent +'"');
     popupImage.querySelector('.popup__subtitle').textContent = imageButton.closest('.element').querySelector('.element__title').textContent;
   });
-  popupImageExitBtn.addEventListener('click',() => popupClose(popupImage));
   return elementElement;
 }
 
@@ -131,7 +130,8 @@ popupEditExitBtn.addEventListener('click',() => popupClose(popupEdit));
 
 addButton.addEventListener('click', () => popupOpen(popupAdd));
 popupAddExitBtn.addEventListener('click' ,() => popupClose(popupAdd));
- 
+
+popupImageExitBtn.addEventListener('click',() => popupClose(popupImage));
 initialCards.forEach((item)=>{
   elements.append(cardOutput(item));
 });
