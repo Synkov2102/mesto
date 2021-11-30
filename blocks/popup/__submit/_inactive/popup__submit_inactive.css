@@ -3,4 +3,9 @@
     background-color: white;
     color:black;
     opacity: 0.3;
+    cursor: default;
+}
+
+.popup__submit_inactive:hover {
+    opacity: 0.3;
 }
