@@ -126,8 +126,7 @@ function addFormSubmitHandler (evt) {
     link: linkInput.value,
     name: titleInput.value
   };
-  object.link = linkInput.value;
-  object.name = titleInput.value;
+ 
   elements.prepend(cardOutput(object));
   popupClose(popupAdd);
   popupAdd.querySelector('.popup__form').reset();
@@ -141,16 +140,6 @@ function addFormSubmitHandler (evt) {
 function setClickExitListener(popupElement) {
   popupElement.addEventListener('click', (evt) => {
       if (evt.target === popupElement) {
-          ;
-          popupClose(popupElement);
-      }
-  });
-}
-
-// Функция для установки слушателей на попапы для закрытия по нажатию Esc
-function setEscExitListener(popupElement) {
-  popupElement.addEventListener('keydown', (evt) => {
-      if (evt.key === 'Escape') {
           popupClose(popupElement);
       }
   });
