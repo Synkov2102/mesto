@@ -32,6 +32,10 @@ const initialCards = [
 //Переменные для попапов
 const popupEdit = document.querySelector('.popup_for_edit-button');
 const popupAdd = document.querySelector('.popup_for_add-button');
+//Переменные для форм попапов
+
+const popupEditForm = popupEdit.querySelector('.popup__form');
+const popupAddForm = popupAdd.querySelector('.popup__form');
 
 //Переменная блока профиля
 const profile = document.querySelector('.profile');
@@ -63,49 +67,44 @@ const profileProfession = document.querySelector('.profile__profession');
 //Переменная блока элементов
 const elements = document.querySelector('.elements');
 
-function escExit (event) {
-  const popup = document.querySelector('.popup_open')
+function exitByEsc (event) {
   if (event.key === 'Escape') {
+    const popup = document.querySelector('.popup_open')
     popupClose(popup);
   } 
 }
 
-const popupOpen = (popup) =>{
+const openPopup = (popup) =>{
   popup.classList.add('popup_open');
 
-  document.addEventListener('keydown', escExit);
+  document.addEventListener('keydown', exitByEsc);
 }
 
 const popupClose = (popup) =>{
   popup.classList.remove('popup_open');
-  document.removeEventListener('keydown', escExit);
+  document.removeEventListener('keydown', exitByEsc);
 }
 const cardTemplate = document.querySelector('#element').content;
 
 
 
-function editFormSubmitHandler (evt) {
+function handlerEditFormSubmit (evt) {
   evt.preventDefault(); 
   profileName.textContent = nameInput.value;
   profileProfession.textContent = jobInput.value;
   popupClose(popupEdit);   
 }
 
-function addFormSubmitHandler (evt) {
+function handlerAddFormSubmit (evt) {
   evt.preventDefault(); 
 
   const object = {
     link: linkInput.value,
     name: titleInput.value
   };
-  const card = new Card (object, cardTemplate)
-  elements.prepend(card.generateCard());
+  elements.prepend(createCard(object));
   popupClose(popupAdd);
-  popupAdd.querySelector('.popup__form').reset();
-
-  const submitButton =popupAdd.querySelector('.popup__submit')
-  submitButton.classList.add('popup__submit_inactive');
-  submitButton.disabled = true;
+  popupAddForm.reset();
 }
 
 // Функция для установки слушателей на попапы для закрытия по клику вне контента
@@ -117,18 +116,57 @@ function setClickExitListener(popupElement) {
   });
 }
 
-editButton.addEventListener('click',() => popupOpen(popupEdit));
-nameInput.value = profileName.textContent;
-jobInput.value = profileProfession.textContent;
+function handleCardClick (name, link) {
+  popupImage.querySelector('.popup__image').src = link;
+  popupImage.querySelector('.popup__image').alt = ('Картинка "'+ name +'"');
+  popupImage.querySelector('.popup__subtitle').textContent = name;
+  openPopup(popupImage);
+}
+
+const formValidators = {};
+const settings = {
+  formElementSelector: '.popup__text-inputs',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+  
+}
+
+function enableValidation (settings) {
+  const formList = Array.from(document.querySelectorAll('.popup__form'));
+  formList.forEach((formElement)=>{
+    const validator = new FormValidator(settings, formElement);
+    formValidators[formElement.name] = validator;
+    validator.enableValidation();
+  });
+};
+
+function createCard(item){
+  const card = new Card (item, cardTemplate, handleCardClick);
+  return card.generateCard();
+}
+
+
+
+editButton.addEventListener('click',() => {
+  openPopup(popupEdit);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileProfession.textContent;
+  formValidators[popupEditForm.name].resetValidation();
+});
 popupEditExitBtn.addEventListener('click',() => popupClose(popupEdit));
 
-addButton.addEventListener('click', () => popupOpen(popupAdd));
+addButton.addEventListener('click', () => {
+  openPopup(popupAdd)
+  formValidators[popupAddForm.name].resetValidation();
+});
 popupAddExitBtn.addEventListener('click' ,() => popupClose(popupAdd));
 popupImageExitBtn.addEventListener('click',() => popupClose(popupImage));
 
 initialCards.forEach((item)=>{
-  const card = new Card(item, cardTemplate);
-  elements.append(card.generateCard());
+  elements.append(createCard(item));
 });
 
 // Установка обработчиков на попапы для закрытия по клику вне контента
@@ -137,20 +175,10 @@ setClickExitListener(popupEdit);
 setClickExitListener(popupImage);
 
 // Установка обработчиков на кноаки отправки формы
-popupAddContainer.addEventListener('submit', addFormSubmitHandler);
-popupEditContainer.addEventListener('submit', editFormSubmitHandler);
+popupAddContainer.addEventListener('submit', handlerAddFormSubmit);
+popupEditContainer.addEventListener('submit', handlerEditFormSubmit);
 
-const settings = {
-  formElementSelector: '.popup__text-inputs',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-}
+enableValidation(settings);
 
-const formSelector = '.popup__form'
 
-const validator = new FormValidator(settings, formSelector);
-validator.enableValidation();
 
