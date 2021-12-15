@@ -70,7 +70,7 @@ const elements = document.querySelector('.elements');
 function exitByEsc (event) {
   if (event.key === 'Escape') {
     const popup = document.querySelector('.popup_open')
-    popupClose(popup);
+    closePopup(popup);
   } 
 }
 
@@ -80,7 +80,7 @@ const openPopup = (popup) =>{
   document.addEventListener('keydown', exitByEsc);
 }
 
-const popupClose = (popup) =>{
+const closePopup = (popup) =>{
   popup.classList.remove('popup_open');
   document.removeEventListener('keydown', exitByEsc);
 }
@@ -92,7 +92,7 @@ function handlerEditFormSubmit (evt) {
   evt.preventDefault(); 
   profileName.textContent = nameInput.value;
   profileProfession.textContent = jobInput.value;
-  popupClose(popupEdit);   
+  closePopup(popupEdit);   
 }
 
 function handlerAddFormSubmit (evt) {
@@ -103,7 +103,7 @@ function handlerAddFormSubmit (evt) {
     name: titleInput.value
   };
   elements.prepend(createCard(object));
-  popupClose(popupAdd);
+  closePopup(popupAdd);
   popupAddForm.reset();
 }
 
@@ -111,7 +111,7 @@ function handlerAddFormSubmit (evt) {
 function setClickExitListener(popupElement) {
   popupElement.addEventListener('click', (evt) => {
       if (evt.target === popupElement) {
-          popupClose(popupElement);
+          closePopup(popupElement);
       }
   });
 }
@@ -148,22 +148,20 @@ function createCard(item){
   return card.generateCard();
 }
 
-
-
 editButton.addEventListener('click',() => {
   openPopup(popupEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileProfession.textContent;
   formValidators[popupEditForm.name].resetValidation();
 });
-popupEditExitBtn.addEventListener('click',() => popupClose(popupEdit));
+popupEditExitBtn.addEventListener('click',() => closePopup(popupEdit));
 
 addButton.addEventListener('click', () => {
   openPopup(popupAdd)
   formValidators[popupAddForm.name].resetValidation();
 });
-popupAddExitBtn.addEventListener('click' ,() => popupClose(popupAdd));
-popupImageExitBtn.addEventListener('click',() => popupClose(popupImage));
+popupAddExitBtn.addEventListener('click' ,() => closePopup(popupAdd));
+popupImageExitBtn.addEventListener('click',() => closePopup(popupImage));
 
 initialCards.forEach((item)=>{
   elements.append(createCard(item));
