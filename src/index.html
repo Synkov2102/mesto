@@ -9,17 +9,17 @@
 
 <body class="body">
     <header class="header">
-        <img class="header__logo" src="<%=require('../images/header_logo.svg')%>" alt="Логотип Место">
+        <img class="header__logo" src="<%=require('./images/header_logo.svg')%>" alt="Логотип Место">
     </header>
     <main class="main">
         <section class="profile">
             <div class="profile__container">
-                <img class="profile__avatar" src="<%=require('../images/profile_avatar.png')%>" alt="Аватар профиля">
+                <img class="profile__avatar" src="<%=require('./images/profile_avatar.png')%>" alt="Аватар профиля">
                 <div class="profile__info">
                     <div class="profile__name-container">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <button type="button" class="profile__edit-button">
-                            <img class="profile__image-edit-button" src="<%=require('../images/profile_edit-button.svg')%>"
+                            <img class="profile__image-edit-button" src="<%=require('./images/profile_edit-button.svg')%>"
                                 alt='Изображение кнопки "редактировать"'>
                         </button>
                     </div>
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <button type="button" class="profile__add-button">
-                <img class="profile__image-add-button" src="<%=require('../images/profile_add-button.svg')%>"
+                <img class="profile__image-add-button" src="<%=require('./images/profile_add-button.svg')%>"
                     alt='Изображение кнопки "добавить"'>
             </button>
         </section>
@@ -45,7 +45,7 @@
         <div class="popup__container">
             <form class="popup__form" novalidate name="editForm">
                 <button type="button" class="popup__exit-button">
-                    <img class="popup__exit-button-image" src="<%=require('../images/form_exit-button.svg')%>"
+                    <img class="popup__exit-button-image" src="<%=require('./images/form_exit-button.svg')%>"
                         alt='Изображение кнопки "выйти"'>
                 </button>
                 <h2 class="popup__title">Редактировать профиль</h2>
@@ -63,7 +63,7 @@
         <div class="popup__container">
             <form class="popup__form" novalidate name="addForm">
                 <button type="button" class="popup__exit-button">
-                    <img class="popup__exit-button-image" src="<%=require('../images/form_exit-button.svg')%>"
+                    <img class="popup__exit-button-image" src="<%=require('./images/form_exit-button.svg')%>"
                         alt='Изображение кнопки "выйти"'>
                 </button>
                 <h2 class="popup__title">Новое место</h2>
@@ -80,7 +80,7 @@
     <div class="popup popup_for_image">
         <div class="popup__container">
             <button type="button" class="popup__exit-button">
-                <img class="popup__exit-button-image" src="<%=require('../images/form_exit-button.svg')%>"
+                <img class="popup__exit-button-image" src="<%=require('./images/form_exit-button.svg')%>"
                     alt='Изображение кнопки "выйти"'>
             </button>
             <img class="popup__image" alt="Картинка с карточки" src="images">

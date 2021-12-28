@@ -1,9 +1,15 @@
+
+
 export default class Card {
-    constructor (cardForRender, сardTemplate, handleCardClick) {
+    constructor (cardForRender, cardTemplateSelector, handleCardClick) {
       this._link = cardForRender.link;
       this._name = cardForRender.name;
-      this._element = сardTemplate.querySelector('.element').cloneNode(true);
       this._handleCardClick = handleCardClick;
+      this._cardTemplateSelector = cardTemplateSelector;
+    }
+
+    _getTemplate () {
+      this._element = document.querySelector(this._cardTemplateSelector).content.querySelector('.element').cloneNode(true)
     }
   
     _fillTemplate () {
@@ -29,6 +35,7 @@ export default class Card {
     }
   
     generateCard () {
+      this._getTemplate();
       this._fillTemplate();
       this._setEventListeners();
       return this._element
