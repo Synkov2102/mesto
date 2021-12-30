@@ -5,7 +5,7 @@ import PopupWithImage from '../scripts/PopupWithImage.js';
 import PopupWithForm from '../scripts/PopupWithForm.js';
 import UserInfo from '../scripts/UserInfo.js';
 import { initialCards, popupEditForm, popupAddForm, editButton, addButton, nameInput, jobInput,
-   profileName, profileProfession, elementsSelector, cardTemplateSelector} from '../utils/constants.js'
+   profileName, profileProfession, elementsSelector, cardTemplateSelector, settings, formValidators} from '../utils/constants.js'
 
 import '../pages/index.css';
 
@@ -17,14 +17,14 @@ function createCard(item){
 }
 
 function handlerEditFormSubmit (inputValues) {
-  userInfo.setUserInfo(inputValues[0], inputValues[1])
+  userInfo.setUserInfo(inputValues['name-input'], inputValues['profession-input'])
   editPopup.close();  
 }
 
 function handlerAddFormSubmit (inputValues) { 
   const object = {
-    link: inputValues[1],
-    name: inputValues[0]
+    link: inputValues['url-input'],
+    name: inputValues['title-input']
   };
   document.querySelector(elementsSelector).prepend(createCard(object));
   addPopup.close();
@@ -39,16 +39,7 @@ function handleCardClick (name, link) {
   popupWithImage.open(name, link);
 }
 
-const formValidators = {};
-const settings = {
-  formElementSelector: '.popup__text-inputs',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-  
-}
+
 
 function enableValidation (settings) {
   const formList = Array.from(document.querySelectorAll('.popup__form'));

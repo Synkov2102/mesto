@@ -52,3 +52,14 @@ export const initialCards = [
   //Переменная блока элементов
   export const elementsSelector = '.elements';
   export const cardTemplateSelector = '#element';
+
+  export const settings = {
+    formElementSelector: '.popup__text-inputs',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__submit_inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
+  }
+  
+  export const formValidators = {};
