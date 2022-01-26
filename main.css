@@ -96,15 +96,42 @@
     }
 }
 .profile__avatar {
+    border-radius: 100%;
     width: 120px;
     height: 120px;
-    display: block;
+    background-image: none;
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
+
+.profile__avatar:before{
+    position: absolute;
+    content: '';
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: black;
+    opacity: 0;
+}
+
+.profile__avatar:hover:before{
+    opacity: 0.8;
+}
+
 
 @media (max-width:950px) {
     .profile__avatar{
         margin:0 auto 0 auto;
     }
+}
+.profile__pen-icon {
+    padding: 47px 47px;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.profile__pen-icon:hover {
+    opacity: 1;
 }
 .profile__info{
     margin: 22px 0 0 30px;
@@ -266,7 +293,7 @@
     position: relative;
 }
 .element__like-button{
-    margin: 5px 0 0 0;
+    margin: 0;
     padding: 0;
     border: none;
     font: inherit;
@@ -289,6 +316,22 @@
 }
 .element__like-button_active{
     background-image: url(b9e22b12c21f10fbc48a.svg);
+}
+.element__like-group {
+    width: 22px;
+    height: 35px;
+}
+.element__like-counter{
+    margin: 0;
+    padding: 0;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+
+    color: #000000;
 }
 .element__picture{
     width: 282px;
@@ -332,6 +375,9 @@
 
 .element__delete-button:hover{
     opacity: 0.6;
+}
+.element__delete-button_inactive {
+    opacity: 0;
 }
 .element__image-button{
     border: none;
@@ -425,7 +471,21 @@
         width: 238px;
     }
 }
-.popup__submit{
+.popup__button-submit {
+    
+}
+.popup__button-submit_inactive {
+    border: 1px solid #000000;
+    background-color: white;
+    color:black;
+    opacity: 0.3;
+    cursor: default;
+}
+
+.popup__button-submit_inactive:hover {
+    opacity: 0.3;
+}
+.popup__button{
     margin: 45px auto 37px auto;
     border: none;
     background: black;
@@ -440,27 +500,16 @@
     border-radius: 2px;
 }
 
-.popup__submit:hover{
+.popup__button:hover{
     opacity: 0.8;
 }
 
 @media (max-width:520px){
-    .popup__submit{
+    .popup__button{
         width: 238px;
         font-size: 14px;
         line-height: 17px;
     }
-}
-.popup__submit_inactive {
-    border: 1px solid #000000;
-    background-color: white;
-    color:black;
-    opacity: 0.3;
-    cursor: default;
-}
-
-.popup__submit_inactive:hover {
-    opacity: 0.3;
 }
 .popup__input{
     margin: 30px 0 0 0;
