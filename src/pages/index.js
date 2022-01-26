@@ -92,7 +92,7 @@ function handlerAddFormSubmit (inputValues) {
 }
 
 function handlerAvatarFormSubmit (inputValues){
-  api.patchAvatar(inputValues['url-input'])
+  api.patchAvatar(inputValues['url-avatar-input'])
     .then (data => {
       userInfo.setUserInfo(data.name, data.about, data.avatar)
     })
