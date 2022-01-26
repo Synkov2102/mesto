@@ -1,4 +1,4 @@
-.popup__submit_inactive {
+.popup__button-submit_inactive {
     border: 1px solid #000000;
     background-color: white;
     color:black;
@@ -6,6 +6,6 @@
     cursor: default;
 }
 
-.popup__submit_inactive:hover {
+.popup__button-submit_inactive:hover {
     opacity: 0.3;
 }
