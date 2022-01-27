@@ -58,7 +58,7 @@ export default class Api {
         })
         .catch((err) => {
             console.log(err);
-        }); 
+        }) 
     }
 
     makeNewCardData (name, link) {
@@ -74,26 +74,40 @@ export default class Api {
                 link: link
             })
         })
-        .then(res => console.log(res))
+        .then(res => {
+            if(res.ok){
+                return res.json();
+            }
+            else {
+                return Promise.reject(`Ошибка: ${res.status}`);
+            }
+        })
         .catch((err) => {
             console.log(err);
-        })
+        }) 
         .finally(()=>{
             this._renderLoading(false,'.popup_for_add-button');
         })
     }
 
     deleteCardData (cardId) {
-        fetch(`${this._baseUrl}/cards/${cardId}`, {
+       return fetch(`${this._baseUrl}/cards/${cardId}`, {
             method: 'DELETE',
             headers: {
                 authorization: this._token,
             }
         })
-        .then(res => console.log(res))
+        .then(res => {
+            if(res.ok){
+                return res.json();
+            }
+            else {
+                return Promise.reject(`Ошибка: ${res.status}`);
+            }
+        })
         .catch((err) => {
             console.log(err);
-        }); 
+        })  
     }
 
     makeLike (cardId) {
@@ -103,10 +117,17 @@ export default class Api {
                 authorization: this._token,
             }
         })
-        .then(res => res.json())
+        .then(res => {
+            if(res.ok){
+                return res.json();
+            }
+            else {
+                return Promise.reject(`Ошибка: ${res.status}`);
+            }
+        })
         .catch((err) => {
             console.log(err);
-        }); 
+        }) 
     }
 
     deleteLike(cardId){
@@ -116,10 +137,17 @@ export default class Api {
                 authorization: this._token,
             }
         })
-        .then(res => res.json())
+        .then(res => {
+            if(res.ok){
+                return res.json();
+            }
+            else {
+                return Promise.reject(`Ошибка: ${res.status}`);
+            }
+        })
         .catch((err) => {
             console.log(err);
-        }); 
+        }) 
     }
 
     patchAvatar(link){
@@ -134,10 +162,17 @@ export default class Api {
                 avatar: link
               })
         })
-        .then(res => res.json())
+        .then(res => {
+            if(res.ok){
+                return res.json();
+            }
+            else {
+                return Promise.reject(`Ошибка: ${res.status}`);
+            }
+        })
         .catch((err) => {
             console.log(err);
-        })
+        }) 
         .finally(()=>{
             this._renderLoading(false,'.popup_for_avatar')
         })
