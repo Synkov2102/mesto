@@ -37,7 +37,5 @@
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__input-error_active'
   }
-
-  export const myID = "765ad6538a76789d2023b521"
   
   export const formValidators = {};

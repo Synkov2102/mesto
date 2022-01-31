@@ -15,6 +15,11 @@ export default class PopupWithForm extends Popup {
         return inputValues
     }
 
+    renderLoading (text) {
+        const buttonElement = this._popup.querySelector('.popup__button-submit');
+        buttonElement.value = text;
+    }
+
     close(){
         this._popup.querySelector('.popup__form').reset();
         super.close();

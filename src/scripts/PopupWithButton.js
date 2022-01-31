@@ -6,17 +6,16 @@ export default class PopupWithButton extends Popup {
         this._handlerCardDelete = handlerCardDelete;
     }
 
-    open (Id, element){
-        this.Id = Id
+    open (id, element){
+        this.id = id
         this.element = element
         super.open();
     }
 
     setEventListeners () {(
         this._popup.querySelector('.popup__container').addEventListener('click', () =>{
-            this._handlerCardDelete(this.Id, this.element);
+            this._handlerCardDelete(this.id, this.element);
         }));
         super.setEventListeners();
-
     }
 }

@@ -1,30 +1,26 @@
 export default class Api {
-    constructor ({baseUrl, token}, renderLoading) {
+    constructor ({baseUrl, token}) {
         this._baseUrl = baseUrl;
         this._token = token;
-        this._renderLoading = renderLoading;
     }
+
+    _getResponseData(res) {
+        if (!res.ok) {
+            return Promise.reject(`Ошибка: ${res.status}`);
+        }
+        return res.json()
+    } 
 
     getProfileInfo () {
         return fetch(`${this._baseUrl}/users/me`, {
         headers: {
             authorization: this._token}
         })
-        .then(res => {
-            if(res.ok){
-                return res.json();
-            }
-            else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        }); 
+        .then(res => this._getResponseData(res))
+            
     }
 
     patchProfileInfo (newName, newAbout) {
-        this._renderLoading(true,'.popup_for_edit-button')
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: {
@@ -36,11 +32,7 @@ export default class Api {
                 about: newAbout
             })
         })
-        .then(res=>res.json())
-        .catch((err) => {
-            console.log(err);
-        })
-        .finally(()=>this._renderLoading(false,'.popup_for_edit-button'))
+        .then(res=> this._getResponseData(res))
     }
 
     getCardsData () {
@@ -48,21 +40,10 @@ export default class Api {
         headers: {
             authorization: this._token}
         })
-        .then(res => {
-            if(res.ok){
-                return res.json();
-            }
-            else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        }) 
+        .then(res => this._getResponseData(res))
     }
 
     makeNewCardData (name, link) {
-        this._renderLoading(true,'.popup_for_add-button')
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
             headers: {
@@ -74,20 +55,7 @@ export default class Api {
                 link: link
             })
         })
-        .then(res => {
-            if(res.ok){
-                return res.json();
-            }
-            else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        }) 
-        .finally(()=>{
-            this._renderLoading(false,'.popup_for_add-button');
-        })
+        .then(res => this._getResponseData(res))
     }
 
     deleteCardData (cardId) {
@@ -97,17 +65,7 @@ export default class Api {
                 authorization: this._token,
             }
         })
-        .then(res => {
-            if(res.ok){
-                return res.json();
-            }
-            else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        })  
+        .then(res => this._getResponseData(res))
     }
 
     makeLike (cardId) {
@@ -117,17 +75,7 @@ export default class Api {
                 authorization: this._token,
             }
         })
-        .then(res => {
-            if(res.ok){
-                return res.json();
-            }
-            else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        }) 
+        .then(res => this._getResponseData(res))
     }
 
     deleteLike(cardId){
@@ -137,21 +85,10 @@ export default class Api {
                 authorization: this._token,
             }
         })
-        .then(res => {
-            if(res.ok){
-                return res.json();
-            }
-            else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        }) 
+        .then(res => this._getResponseData(res))
     }
 
     patchAvatar(link){
-        this._renderLoading(true,'.popup_for_avatar')
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers: {
@@ -162,19 +99,6 @@ export default class Api {
                 avatar: link
               })
         })
-        .then(res => {
-            if(res.ok){
-                return res.json();
-            }
-            else {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        }) 
-        .finally(()=>{
-            this._renderLoading(false,'.popup_for_avatar')
-        })
+        .then(res => this._getResponseData(res))
     }
 }

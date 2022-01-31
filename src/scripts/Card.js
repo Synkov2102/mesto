@@ -1,13 +1,11 @@
-import { myID } from "../utils/constants";
-
 
 export default class Card {
-    constructor (cardForRender, cardTemplateSelector, handleCardClick, handleDeleteClick, handleLikeClick, myID) {
+    constructor (cardForRender, cardTemplateSelector, handleCardClick, handleDeleteClick, handleLikeClick, myId) {
       this._link = cardForRender.link;
       this._name = cardForRender.name;
       this.id = cardForRender._id;
       this._ownerID = cardForRender.owner._id;
-      this._myID = myID;
+      this._myId = myId;
       this._likes = cardForRender.likes;
       this._likeCounter = cardForRender.likes.length;
       this._handleCardClick = handleCardClick;
@@ -30,11 +28,10 @@ export default class Card {
     _setEventListeners () {
       this._deleteButton = this._element.querySelector('.element__delete-button');
       this._deleteButton.addEventListener('click', ()=>{
-        this._hadleDeleteClick(this.id, this._element);
+        this._hadleDeleteClick(this.id, this);
       });
       this._likeButton = this._element.querySelector('.element__like-button');
       this._likeButton.addEventListener('click', ()=>{
-        this._likeButton.classList.toggle('element__like-button_active');
         this._handleLikeClick(this.id, this._element);
       });
       const imageButton = this._element.querySelector('.element__image-button');
@@ -43,20 +40,30 @@ export default class Card {
       });
     }
 
+    like(data) {
+      this._element.querySelector(".element__like-counter").textContent = data.likes.length;
+      this._likeButton.classList.toggle('element__like-button_active');
+    }
+
     _isLiked() {
-      const result = this._likes.find(item => item._id == this._myID)
+      const result = this._likes.find(item => item._id == this._myId)
       if (result != undefined){
         return true
       }
       else return false
     }
 
+    removeCard() {
+      this._element.remove();
+      this._element = null;
+    } 
+
     generateCard () {
       this._getTemplate();
       this._fillTemplate();
       this._setEventListeners();
 
-      if (this._ownerID != this._myID){
+      if (this._ownerID != this._myId){
         this._deleteButton.disabled = true;
         this._deleteButton.classList.add('element__delete-button_inactive');
         this._deleteButton.classList.remove('element__delete-button');
